@@ -1,0 +1,62 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python preprocess.py
+    deps:
+    - path: Titanic-Dataset.csv
+      hash: md5
+      md5: 2309cc5f04782ed9bb6016d9f4e381cf
+      size: 61194
+    - path: preprocess.py
+      hash: md5
+      md5: d2760f15b525ccdd5b54b62f7173ae1b
+      size: 1082
+    outs:
+    - path: data/test.csv
+      hash: md5
+      md5: 6ab18d2e4f0c6bcc795271a82af60996
+      size: 4705
+    - path: data/train.csv
+      hash: md5
+      md5: 2f12c4408db756445f709d6fbd4591ea
+      size: 18647
+  train:
+    cmd: python train.py
+    deps:
+    - path: data/train.csv
+      hash: md5
+      md5: 2f12c4408db756445f709d6fbd4591ea
+      size: 18647
+    - path: train.py
+      hash: md5
+      md5: d91e88fa2c1690345432952cc9d165aa
+      size: 548
+    outs:
+    - path: model/model.pkl
+      hash: md5
+      md5: d2d8011f975d558233190691de811dc0
+      size: 2172265
+  validate:
+    cmd: python validate.py
+    deps:
+    - path: data/test.csv
+      hash: md5
+      md5: 6ab18d2e4f0c6bcc795271a82af60996
+      size: 4705
+    - path: model/model.pkl
+      hash: md5
+      md5: d2d8011f975d558233190691de811dc0
+      size: 2172265
+    - path: validate.py
+      hash: md5
+      md5: 462ca731630e443df6612e624071449d
+      size: 881
+    outs:
+    - path: results/confusion_matrix.png
+      hash: md5
+      md5: 5aa0434b4598ee01d2f204dde8d6de18
+      size: 17506
+    - path: results/metrics.json
+      hash: md5
+      md5: e64a42d448274c983d394bdc658739dd
+      size: 40

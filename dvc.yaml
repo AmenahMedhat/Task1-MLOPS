@@ -2,27 +2,28 @@ stages:
   preprocess:
     cmd: python preprocess.py
     deps:
-      - preprocess.py
-      - Titanic-Dataset.csv
+    - preprocess.py
+    - Titanic-Dataset.csv
     outs:
-      - data/train.csv
-      - data/test.csv
+    - data/train.csv
+    - data/test.csv
 
   train:
     cmd: python train.py
     deps:
-      - train.py
-      - data/train.csv
+    - train.py
+    - data/train.csv
     outs:
-      - model/model.pkl
-
+    - model/model.pkl
   validate:
-    cmd: python validate.py
+    cmd: python Validate.py
     deps:
-      - validate.py
-      - model/model.pkl
-      - data/test.csv
+    - Validate.py
+    - data/test.csv
+    - model/model.pkl
     outs:
-      - results/confusion_matrix.png
+    - results/confusion_matrix.png:
+        cache: false
     metrics:
-      - results/metrics.json
+    - results/metrics.json:
+        cache: false

@@ -19,15 +19,15 @@ stages:
   validate:
     cmd: python validate.py
     deps:
-     - data/test.csv
-     - model/model.pkl
-     - validate.py
+      - data/test.csv
+      - model/model.pkl
+      - validate.py
     metrics:
-     - results/metrics.json:
-        cache: false
+      - results/metrics.json:
+          cache: false
     plots:
-     - results/confusuion_matrix.png:
-        cache: false
+      - results/confusuion_matrix.png:
+          cache: false
 
 
         

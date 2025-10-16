@@ -26,7 +26,7 @@ stages:
       - results/metrics.json:
           cache: false
     plots:
-      - results/confusuion_matrix.png:
+      - results/confusion_matrix.png:
           cache: false
 
 

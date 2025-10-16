@@ -21,5 +21,4 @@ model.fit(X_train, y_train)
 # Save model
 os.makedirs("model", exist_ok=True)
 joblib.dump(model, "model/model.pkl")
-
 print("✅ Model trained and saved to model/model.pkl")
